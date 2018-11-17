@@ -1,0 +1,165 @@
+.radiotextsty {
+    color: #A5A4BF;
+    font-size: 18px;
+  }
+.question-box-shadow {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    font-family: 'robotolight' !important;
+}
+.btn {
+    /* margin-right: 50px; */
+    margin: 20px 10px 50px 0px !important;
+}
+ 
+  .customradio {
+   
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    /* display: inline-block; */
+    /* height: 25px; */
+    line-height: 25px;
+    font-size: 1rem;
+    transition: .28s ease;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .customradio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: white;
+    border-radius: 50%;
+    border:1px solid #BEBEBE;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .customradio:hover input ~ .checkmark {
+    background-color: transparent;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .customradio input:checked ~ .checkmark {
+    background-color: white;
+    border:1px solid #BEBEBE;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .customradio input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .customradio .checkmark:after {
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #A3A0FB;
+  }
+  
+  /* Custom Radio Button End*/
+  
+  
+  /*btn*/
+  
+  .btn{
+  
+    margin-right: 50px;
+    margin-top: 100px;
+  }
+//   .btn[_ngcontent-c10] {
+//     margin-right: 520px;
+//     margin-top: 100px;
+// }
+  
+  body{
+    margin-top:150px;
+  }
+
+// asterik
+ 
+.required-mark:after {
+    color: #e32;
+    content: ' *';
+    
+}
+
+  
+    
+
+  .ngx-datatable.material .datatable-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+    .ngx-datatable.material .datatable-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+    
+    @font-face {
+    font-family: 'robotolight';
+    src: url('../../assets/fonts/roboto-light-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/roboto-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+    .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell {
+        padding-left:15px;
+    }
+    .ngx-datatable .datatable-footer .datatable-footer-inner {
+        padding-left:16px;
+    }
+    .ngx-datatable .datatable-body-cell, .ngx-datatable .datatable-header-cell {
+        padding-top:15px;
+    }
+   
+
+    .ngx-datatable.material .datatable-footer .datatable-pager li.active a {
+        background-color: rgba(158, 158, 158, 0.2);
+    font-weight: bold;
+    }
+    .ngx-datatable.material .datatable-footer .datatable-pager a:hover {
+        color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(158, 158, 158, 0.2);
+    }
+    a:hover, a:focus {
+        text-decoration:none !important;
+    }
+    .inner-table tr {
+        border:none !important;
+    }
+
+    .card .card-header .card-title {
+        color:#000;
+        font-weight:bold;
+    }

@@ -1,0 +1,40 @@
+<pgcard TimeOut="3000" AdditionalClasses="widget-11-2 card no-border card-condensed no-margin widget-loader-circle full-height d-flex flex-column" ProgressType="bar" Maximize="false" Toggle="false" Close="false" BodyClass="no-padding" HeaderClass="top-right">
+	<div class="padding-25">
+		<div class="pull-left">
+			<h2 class="text-success no-margin">TODAY'S PARTNERS</h2>
+
+			<p class="no-margin">TODAY'S INCOMPLETE</p>
+		</div>
+		<h3 class="pull-right semi-bold">
+			<sup *ngIf="Fee">
+				<small class="semi-bold">$</small>
+			</sup><span *ngFor="let data of Fee">{{data.signupfee}}</span> 
+		</h3>
+		<div class="clearfix"></div>
+	</div>
+    <div *ngIf="rows">
+        <ngx-datatable class="material today-partners"
+                       [rows]="rows"                       
+                       [columnMode]="'force'"
+                       [headerHeight]="50"
+                       [footerHeight]="50"
+                       [rowHeight]="'auto'"
+                       [limit]="10">
+            <ngx-datatable-column width="150">
+                <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+                    <strong title="{{row.mailing_city_town}}">{{row.mailing_city_town}}</strong>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column width="150">
+                <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+                    <strong title="{{row.first_name}}">{{row.first_name}}</strong>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column width="100">
+                <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+                    <div style="text-align:right;"><strong title="{{row.weeklyfee}}">{{row.weeklyfee}}</strong></div>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
+</pgcard>

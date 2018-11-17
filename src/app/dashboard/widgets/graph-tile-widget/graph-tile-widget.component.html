@@ -1,0 +1,16 @@
+<pgcard TimeOut="3000" ProgressType="bar" AdditionalClasses="widget-4 card no-border today-partner-pro no-margin widget-loader-bar full-height" Maximize="false" Toggle="false" Close="false" BodyClass="no-padding">
+    <ng-template #CardTitle>
+        <span class="font-montserrat fs-11 all-caps">
+            TODAY'S PARTNERS PRO <i class="fa fa-chevron-right"></i>
+        </span>
+    </ng-template>
+    <div class="container-sm-height full-height d-flex flex-column">
+        <div class="p-l-20 p-r-20">
+            <h5 class="no-margin font-montserrat fs-11 all-caps">TODAY'S PARTNERS PRO INCOMPLETE</h5>
+            <!--<div class="clearfix"></div>-->
+        </div>
+        <div class="col-sm-6" *ngIf="Fee">
+                <h3 class="no-margin p-b-5 text-black-50"><span *ngFor="let data of Fee">${{data.weeklyfee}}</span> </h3>
+        </div>
+    </div>
+</pgcard>

@@ -1,0 +1,45 @@
+ h5 {
+        font-family: 'robotolight' !important;
+    }
+    @font-face {
+        font-family: 'robotolight';
+        src: url('../../assets/fonts/roboto-light-webfont.woff2') format('woff2'), url('../../assets/fonts/roboto-light-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    nav {min-height:auto;}
+    input[type=text] {
+        background-color:#1c202a;
+        padding-left:10px;
+        color:#b7b7b7;
+        border:#2e2d32 1px solid;
+        margin-top: 20px;
+    }
+    input[type=password] {
+        background-color:#1c202a;
+        padding-left:10px;
+        color:#b7b7b7;
+        border:#2e2d32 1px solid;
+        margin-top: 20px;
+    }
+    .form-group {
+    margin-bottom: -8px;
+}
+    .btn, .btn-large, .btn-small, .btn-flat {
+    border: none;
+    border-radius: 0px;
+    display: inline-block;
+    height: 52px;
+    line-height: 36px;
+    padding: 0 16px;
+    text-transform: uppercase;
+    background-color:#52bcf2;
+    box-shadow:none;
+    width: 98%;
+    /* vertical-align: middle; */
+    /* -webkit-tap-highlight-color: transparent; */
+    }
+
+    .img-fluid{
+        margin-left:30px;
+    }

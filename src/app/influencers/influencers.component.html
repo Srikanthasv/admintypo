@@ -1,0 +1,127 @@
+<!-- <p>
+  influencers works!
+</p> -->
+
+<!-- <p>
+  riders works!
+</p> -->
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../assets/css/bootstrap-3.3.7.css">
+</head>
+<pg-container>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="container">
+              <!-- START card -->
+              <div class="card card-transparent">
+                  <div class="card-header ">
+                      <div class="card-title">
+                          Influencers Detailed View Table
+                      </div>
+                  </div>
+                  <div class="card-body">
+                          <ngx-datatable #myTable
+                                         class='material expandable'
+                                         [columnMode]="force"
+                                         [headerHeight]="50"
+                                         [footerHeight]="50"
+                                         [rowHeight]="50"
+                                         [scrollbarV]="true"
+                                         [rows]='rows'
+                                         (page)="onPage($event)">
+                              <!-- Row Detail Template -->
+                              
+                              <!-- Column Templates -->
+                              <ngx-datatable-column [width]="50"
+                                                    [resizeable]="false"
+                                                    [sortable]="false"
+                                                    [draggable]="false"
+                                                    [canAutoResize]="false">
+                                  <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                                      <a href="javascript:void(0)"
+                                         [class.datatable-icon-right]="!expanded"
+                                         [class.datatable-icon-down]="expanded"
+                                         title="Expand/Collapse Row"
+                                         (click)="toggleExpandRow(row)">
+                                      </a>
+                                  </ng-template>
+                                </ngx-datatable-column>
+                                <div class="col-md-12" style="padding-top: 10px;">
+                                    <ngx-datatable-column name="First Name" width="100">
+                                        <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template >
+                                            <strong title="{{row.first_name}}">{{row.first_name}}</strong>
+                                        </ng-template>
+  
+                                    </ngx-datatable-column>
+                                </div>
+  
+                                <ngx-datatable-column name="Last Name" width="100">
+                                  <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                                      <strong title="{{row.last_name}}">{{row.last_name}}</strong>
+                                  </ng-template>
+                              </ngx-datatable-column>
+  
+                              <ngx-datatable-column name="Middle Name" width="100">
+                                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                      <strong title="{{row.middle_name}}">{{row.middle_name}}</strong>
+                                  </ng-template>
+                              </ngx-datatable-column>
+  
+                              <ngx-datatable-column name="Email" width="100">
+                                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                      <i [innerHTML]="row['email_address']" title="{{row.email_address}}"></i>
+                                  </ng-template>
+                              </ngx-datatable-column>
+  
+                              <ngx-datatable-column name="Country Code" width="100">
+                                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                      <i [innerHTML]="row['mobile_phone_country_code']" title="{{row.mobile_phone_country_code}}"></i>
+                                  </ng-template>
+                              </ngx-datatable-column>
+  
+  
+                              <ngx-datatable-column name="Mobile Phone" width="100">
+                                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                      <i [innerHTML]="row['mobile_phone_number']" title="{{row.mobile_phone_number}}"></i>
+                                  </ng-template>
+                              </ngx-datatable-column>
+                              <ngx-datatable-column name="Mailing City" width="100">
+                                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                      <i [innerHTML]="row['mailing_city_town']" title="{{row.mailing_city_town}}"></i>
+                                  </ng-template>
+                              </ngx-datatable-column>
+  
+                              <ngx-datatable-column name="Membership" width="100">
+                                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                      <i [innerHTML]="row['membership_plans_id']" title="{{row.membership_plans_id}}"></i>
+                                  </ng-template>
+                              </ngx-datatable-column>
+  
+                              <ngx-datatable-column name="SignUp Fee" width="100">
+                                  <ng-template let-row="row" let-value="decimal" ngx-datatable-cell-template>
+                                      <i [innerHTML]="row['signup_fee']" title="{{row.signup_fee}}"></i>
+                                  </ng-template>
+                                </ngx-datatable-column>
+                              <ngx-datatable-column name="Monthly Fee" width="100">
+                                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                      <div style="text-align:right;"><i [innerHTML]="row['monthly_fee']" title="{{row.monthly_fee}}"></i></div></ng-template>
+                              </ngx-datatable-column>
+                              <ngx-datatable-column name="Annual Fee" width="100">
+                                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                      <div style="text-align:right;"><i [innerHTML]="row['annual_fee']" title="{{row.annual_fee}}"></i></div></ng-template>
+                              </ngx-datatable-column>
+                              <ngx-datatable-column name="Status" width="100">
+                                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                      <i [innerHTML]="row['status']" title="{{row.status}}"></i>
+                                  </ng-template>
+                              </ngx-datatable-column>
+                          </ngx-datatable>
+                      <!--</div>-->
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</pg-container>

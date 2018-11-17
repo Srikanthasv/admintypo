@@ -1,0 +1,21 @@
+<pgcard TimeOut="3000" AdditionalClasses="widget-5 card no-border week-partner-pro no-margin widget-loader-bar full-height" Maximize="false" Toggle="false" Close="false" BodyClass="no-padding">
+    <ng-template #CardTitle>
+        <span class="font-montserrat fs-11 all-caps">
+            WEEKLY INFLUENCER<i class="fa fa-chevron-right"></i>
+        </span>
+    </ng-template>
+    <div class="container-sm-height full-height d-flex flex-column">
+        <div class="row-xs-height ">
+            <div class="col-xs-height col-top" #chartContainer>
+                <div class="row">
+                    <div class="col-sm-12" *ngIf="Fee">
+                        <h3 class="no-margin p-b-5 text-black-50"><span *ngFor="let data of Fee">${{data.weeklyfee}}</span> </h3>
+                    </div>
+                </div>
+                <div class="widget-8-chart line-chart" data-line-color="white" data-points="true" [attr.data-point-color]="_pointColor" data-stroke-width="2">
+                    <nvd3 [options]="chartOptions" [data]="chartData"></nvd3>
+                </div>
+            </div>
+        </div>
+    </div>
+</pgcard>

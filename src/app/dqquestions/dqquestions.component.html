@@ -1,0 +1,82 @@
+<pg-container>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <!-- START card -->
+                <div class="card card-transparent question-box-shadow">
+                    <div class="card-header">
+                        <div class="card-title">
+                            PARTNER QUALIFYING QUESTIONS
+                        </div>
+                    </div> 
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit(dqForm.value)" [formGroup]="dqForm" novalidate>
+                            <div>{{errorMsg}}</div>
+                            <div class="form-group">
+                                <label>Question</label>
+                                <textarea type="email" class="form-control" [formControl]="dqForm.controls['comment']" [(ngModel)]="comment" [ngClass]="{ 'is-invalid': dqForm.submitted && dqForm.comment.invalid }" required></textarea>
+                                <div *ngIf="dqForm.submitted && dqForm.comment.invalid" class="invalid-feedback">
+                                    <div align="left" *ngIf="dqForm.comment.errors.required">Please enter the question.</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Qualifying Answer<span class="required-mark"></span></label>
+                            </div>
+                            <div class="form-group radio radio-success">
+                                <input type="radio" value="1" name="options" [formControl]="dqForm.controls['yes']" [(ngModel)]="model.options" id="yes">
+                                <label for="yes">Yes</label>
+                                <input type="radio" value="0" name="options" [(ngModel)]="model.options" [formControl]="dqForm.controls['no']" id="no">
+                                <label for="no">No</label>
+                            </div>
+                            <button type="submit" class="btn btn-complete btn-cons">Submit</button>
+                            <button type="button" (click)="cleardq()" class="btn btn-complete btn-cons">Cancel</button>
+
+                            <ngx-datatable #myTable
+                                           class='material expandable'
+                                           [columnMode]="force"
+                                           [headerHeight]="50"
+                                           [footerHeight]="50"
+                                           [rowHeight]="50"
+                                           [scrollbarV]="true"
+                                           [rows]='rows'
+                                           (page)="onPage($event)">
+                                <!-- Column Templates -->
+                                <ngx-datatable-column [width]="50"
+                                                      [resizeable]="false"
+                                                      [sortable]="false"
+                                                      [draggable]="false"
+                                                      [canAutoResize]="true">
+                                    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                                        <a href="javascript:void(0)"
+                                           [class.datatable-icon-right]="!expanded"
+                                           [class.datatable-icon-down]="expanded">
+                                        </a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <div class="col-md-12" >
+                                    <ngx-datatable-column name="Question" width="400">
+                                        <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+                                            <strong title="{{row.question}}">{{row.question}}</strong>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                </div>
+                                <ngx-datatable-column name="Answer" width="100">
+                                    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                                        <strong title="{{row.QAnswer}}">{{row.QAnswer}}</strong>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="Status" width="100">
+                                    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                                        <strong title="{{row.DQStatus}}">{{row.DQStatus}}</strong>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                        </form>  
+                    </div>                                        
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+</pg-container>

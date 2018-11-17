@@ -1,0 +1,27 @@
+<!--<pgcard TimeOut="3000" AdditionalClasses="widget-15 card no-border today-influencer-bg no-margin widget-loader-bar" Maximize="false" Toggle="false"
+        Close="false" style="background-color:#D5D5D5">
+    <ng-template #CardTitle>
+        <span class="font-montserrat fs-11 all-caps">
+            TODAY'S INFLUENCER 
+            <i class="fa fa-chevron-right"></i>
+        </span>
+    </ng-template>
+    <div class="row">
+        <div class="col-sm-12" *ngIf="Fee">
+            <h4 class="no-margin p-b-5 text-danger semi-bold"><span *ngFor="let data of Fee">${{data.weeklyfee}}</span> </h4>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</pgcard>-->
+<pgcard TimeOut="3000" ProgressType="bar" AdditionalClasses="widget-4 card no-border today-influencer-bg no-margin widget-loader-bar full-height" Maximize="false" Toggle="false" Close="false" BodyClass="no-padding">
+    <ng-template #CardTitle>
+        <span class="font-montserrat fs-11 all-caps">
+            TODAY'S INFLUENCER <i class="fa fa-chevron-right"></i>
+        </span>
+    </ng-template>
+    <div class="container-sm-height full-height d-flex flex-column">
+        <div class="col-sm-6" *ngIf="Fee">
+            <h3 class="no-margin p-b-5 text-black-50"><span *ngFor="let data of Fee">${{data.weeklyfee}}</span> </h3>
+        </div>
+    </div>
+</pgcard>
