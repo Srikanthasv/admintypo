@@ -70,8 +70,19 @@
                                         <strong title="{{row.DQStatus}}">{{row.DQStatus}}</strong>
                                     </ng-template>
                                 </ngx-datatable-column>
+                                <ngx-datatable-column name="edit" width="100">
+                                    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                                        <strong title="Edit"><a style="cursor:pointer" (click)="editqn(row)">Edit</a></strong>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="edit" width="100">
+                                    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                                        <strong title="Delete" ><a style="cursor:pointer" (click)="deleteqn(row.id)">Delete</a></strong>
+                                    </ng-template>
+                                </ngx-datatable-column>
                             </ngx-datatable>
                         </form>  
+                     
                     </div>                                        
             </div>
         </div>

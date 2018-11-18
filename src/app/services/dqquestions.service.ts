@@ -58,11 +58,12 @@ export class DqquestionsService
     
 
     updateDqquest(body) {
+        body=JSON.parse(body);
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
     let options = new RequestOptions({ headers: headers });
                 
-    return this.http.post("http://34.220.23.209/api/updateDriverQuestion", body,options)
+    return this.http.put("http://34.220.23.209/api/updateDriverQuestions?question="+body.question+"&answer="+body.answer+"&id="+body.id, body,options)
         .map((response: Response) => {
             let Data = response.json() && response.json().data;
             if (Data) {
@@ -75,11 +76,12 @@ export class DqquestionsService
     }
 
     deleteDqquest(body) {
-    var headers = new Headers();
+        body=JSON.parse(body);
+           var headers = new Headers();
             headers.append("Content-Type", "application/json");
             let options = new RequestOptions({ headers: headers });
                             
-            return this.http.put("http://34.220.23.209/api/DeleteDriverQuestions",body, options)
+            return this.http.delete("http://34.220.23.209/api/DeleteDriverQuestions?status="+body.status+"&id="+body.id, options)
                 .map((response: Response) => {
                     let Data = response.json() && response.json().data;
                     if (Data) {

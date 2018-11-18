@@ -3,13 +3,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
-import {DqquestionsService} from '../services/dqquestions.service';
-import {AuthService} from "../auth.service";
+import { DqquestionsService } from '../services/dqquestions.service';
+import { AuthService } from "../auth.service";
 
 @Component({
-  selector: 'app-dqquestions',
-  templateUrl: './dqquestions.component.html',
-  styleUrls: ['./dqquestions.component.scss']
+    selector: 'app-dqquestions',
+    templateUrl: './dqquestions.component.html',
+    styleUrls: ['./dqquestions.component.scss']
 })
 export class DqquestionsComponent implements OnInit {
     data: any[];
@@ -22,6 +22,7 @@ export class DqquestionsComponent implements OnInit {
     displayFlag: boolean = true;
     loginForm: FormGroup;
     submitted = false;
+    id:any=0;
 
     @ViewChild('myTable') table: any;
 
@@ -38,48 +39,44 @@ export class DqquestionsComponent implements OnInit {
     constructor(private fb: FormBuilder,
         private router: Router,
         private http: Http,
-        private DqquestionsService: DqquestionsService, private changeDetector: ChangeDetectorRef) {     
-      }
+        private DqquestionsService: DqquestionsService, private changeDetector: ChangeDetectorRef) {
+    }
 
-     
-    ngOnInit() 
-    {
+
+    ngOnInit() {
         this.dqForm = this.fb.group({
             'comment': [null, Validators.compose([Validators.required])],
             'yes': [null],
             'no': [null]
         });
-       
+
         this.getData();
     }
 
-      getData() {
-          this.DqquestionsService.getDqquest()
-          .subscribe(res => {
-              this.Qualify = res;
-              this.rows = this.Qualify.data;        
-          }
-          );
+    getData() {
+        this.DqquestionsService.getDqquest()
+            .subscribe(res => {
+                this.Qualify = res;
+                this.rows = this.Qualify.data;
+            }
+            );
     }
-      cleardq() {
-          this.comment = "";
-          this.model = { options: '1' };
-      }
+    cleardq() {
+        this.comment = "";
+        this.model = { options: '1' };
+    }
 
-    
-      toggleExpandRow(row)
-      {
+
+    toggleExpandRow(row) {
         console.log('Toggled Expand Row!', row);
         this.table.rowDetail.toggleExpandRow(row);
     }
 
-        onDetailToggle(event)
-        {
-            console.log('Detail Toggled', event);
-        }
-    
-    onSubmit(value)
-    {
+    onDetailToggle(event) {
+        console.log('Detail Toggled', event);
+    }
+
+    onSubmit(value) {
         this.submitted = true;
 
         // stop here if form is invalid
@@ -89,28 +86,66 @@ export class DqquestionsComponent implements OnInit {
         //    return;
         //}
         //else {
-            //if (this.no.checked == "checked")
-            //    this.answer = "0";
+        //if (this.no.checked == "checked")
+        //    this.answer = "0";
 
         if (this.dqForm.valid) {
+            if(this.id ===0){
             let link = ['/dqquestions'];
-            var body = JSON.stringify({ "question": this.comment, "answer" : this.model.options});
+            var body = JSON.stringify({ "question": this.comment, "answer": this.model.options });
             //console.log("body" + body);
             this.DqquestionsService.postDqquest(body)
                 .subscribe(res => {
-                    
                 },
+                    err => {
+                        err = err
+                        console.log("Error" + err);
+                        this.getData();
+                        this.dqForm.reset();
+                        this.model = { options: '1' };
+                    }
+                );
+                }else{
+                    //update
+                    var body = JSON.stringify({ "id": this.id,"question": this.comment, "answer": this.model.options });
+                  // alert(body)
+                    this.DqquestionsService.updateDqquest(body)
+                    .subscribe(res => {
+                        this.getData();
+                    },
+                        err => {
+                            err = err
+                            console.log("Error" + err);
+                            this.getData();
+                            this.dqForm.reset();
+                            this.model = { options: '1' };
+                        }
+                    );
+                }
+
+        }
+        //}
+    }
+    deleteqn(id) {
+        var body = JSON.stringify({ "status": 0, "id": id });
+
+        this.DqquestionsService.deleteDqquest(body)
+            .subscribe(res => {
+                this.getData();
+            },
                 err => {
                     err = err
                     console.log("Error" + err);
-                    //this.errorMsg = "Failed to save the details.";
                     this.getData();
                     this.dqForm.reset();
                     this.model = { options: '1' };
                 }
             );
-            
-        }
-    //}
+    }
+    
+    editqn(row) {
+        this.comment = row.question;
+        this.model = { options: row.answer+'' };
+        this.id=row.id;
     }
 }
